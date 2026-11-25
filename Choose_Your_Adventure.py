@@ -55,6 +55,10 @@ if choice_0 == "1":
     print("Around a sharp corner, you come across a fork in the path. To the left, you see a wide, open valley. To the right, the path continues deeper into the forest.")
     print()
     choice_1 = input("Type '1' to turn left into the valley, or type '2' to turn right into the forest.")
+    while choice_1 not in ["1", "2"]:
+        print()
+        print("Invalid choice. Please try again")
+        choice_1 = input("Type '1' to turn left or '2' to turn right")
     if choice_1 == "1":
         print()
         print("You ride down into the valley, your goat easily traversing the rocky terrain. Tall grass grows on\neither side of the path, swaying and rustling in the breeze.")
@@ -63,7 +67,7 @@ if choice_0 == "1":
         print("The goblin snarls, 'stop! you may go no further until you have answered my riddle. Answer correctly, and I will give you this map that leads to untold treasures. Answer incorrectly, and you will become acquainted with my sword. You have five guesses'.")
         guess = input("My riddle is this: What has a bed but never sleeps, can run but never walks, and has a mouth\nbut never talks?")
         if f3_guess_the_code(guess):
-            print("You examine the map.  ")
+            print("You examine the map. It leads out of the meadow path and towards a rocky cliff")
         else:
             print("The goblin lunges at you and pierces your side with its sword. You fall from your mount and\neverything goes black.")
             print("GAME OVER")
