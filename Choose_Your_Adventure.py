@@ -1,3 +1,5 @@
+import random
+
 # List of our functions
 def main():
     a = 0
@@ -32,11 +34,119 @@ def f4_decode_the_message():
 def f5_the_maze():
     f = 5
 
+
 def f6_combat_system():
-    g = 6
+    '''
+    This functions allows the player to fight a Magical Guardian.
+    The plater chooses between Fire, Water and Earth.
+    The Guardian randomly chooses an element. 
+    A draw allos the player to try again.
+    '''
+
+    print()
+    print("The Magical Guardian blocks your path!")
+    print("'You shall not pass unless you defeat me in a magical duel!'")
+
+    while True:
+        print()
+        print("Choose your magical element:")
+        print("1. Fire")
+        print("2. Water")
+        print("3. Earth")
+
+        player = input("Choose your element: ")
+
+        while player not in ["1", "2", "3"]:
+            print("Invalid choice. Try again.")
+            player = input("Choose your element: ")
+
+        if player == "1":
+            player_spell = "fire"
+        if player == "2":
+            player_spell = "water"
+        else:
+            player_spell = "earth"
+
+        guardian_spell = random.choice(["fire", "water", "earth"])
+
+        print()
+        print("You cast", player_spell)
+        print("The Guardian casts", guardian_spell)
+        
+        if player_spell == guardian_spell:
+            print("It's a draw! Try again.")
+
+
+        elif (player_spell == "fire" and guardian_spell == "earth") or \
+             (player_spell == "earth" and guardian_spell == "water") or \
+             (player_spell == "water" and guardian_spell == "fire"):
+
+            print("You win! The Guardian disappears.")
+            return True
+
+        else:
+            print("You lost! The Guardian defeats you.")
+            return False
 
 def f7_potion_challenge():
     h = 7
+
+def f8_final_battle_wr():
+    i = 8
+
+def wizard_raccoon():
+    '''
+    This function controls the Wizard Raccoon's storyline. 
+    The player must defeat the Magical Guardian, create a potion and defeat the Dark Wizard to recover the stolen crystal. 
+    Losing any of the challegenges results in game over.
+    '''
+
+    print()
+    print("You have chosen the Wizard Raccoon!")
+    print("You are a young wizard who lives in an enchanted forest.")
+    print("One morning, you discover the magical crystal")
+    print("protecting your forest has been stolen by a Dark Wizard.")
+    print("You must recover it before the forest loses its magic.")
+
+    print()
+    print("You travel tgrough the forest until you reach an old bridge.")
+    print("A Magical Guardian appears and challenges you to a duel.")
+
+    if f6_combat_system() == False:
+        print()
+        print("Game Over!! Your journey ends at the bridge.")
+        return
+
+    print()
+    print("You cross the bridge and reach the Dark Wizard's castle.")
+    print("Inside, you discover a magical door protecting the crystal.")
+    print("You must prepare a special potion to open it.")
+
+    if f7_potion_challenge() == False:
+        print()
+        print("Game Over!! You failed to break the magical spell.")
+        return
+
+    print()
+    print("The magical doors opens!")
+    print("You enter the throne room and find the Dark Wizard.")
+    print("He is holding the stolen crystal.")
+    print("You must defeat him to save the forest!")
+
+    if f8_final_battle_wr() == False:
+        print()
+        print("Game Over!! The Dark Wizard keeps the crystal.")
+        return
+
+    print()
+    print("You recover the stolen crystal!")
+    print("You return to the forest and restore its magic.")
+    print("The trees begin to glow and the creatures celebrate.")
+
+    print()
+    print("CONGRATULATIONS!!")
+    print("You completed the Wizard Raccoon's adventure!")
+    print("ENGING: TH GUARDINAN OF THE FOREST.")    
 
 # Start of game    
 print("Hello and welcome to this choose your own adventure game!\nIn this game, every decision you make will affect how your story ends, so choose wisely...")
