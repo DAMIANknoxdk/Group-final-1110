@@ -89,7 +89,67 @@ def f6_combat_system():
             return False
 
 def f7_potion_challenge():
-    h = 7
+    '''
+    This function challenges the player to create a magical potion.
+    The player must choose three ingredients in the correct order.
+    They have three attempts.
+    Hints are provided.
+    '''
+
+    print()
+    print("You have reached the castle!")
+    print("A magical door blocks your way.")
+    print("'Only the correct potion can break this spell!'")
+
+    print()
+    print("Choose three ingredients in the correct order:")
+    print("1. Moonflower")
+    print("2. Dragon scale")
+    print("3. Stardust")
+    print("4. Nightshade")
+
+    print()
+    print("HINT: Begin where petals bloom, awaken the ancient fire for power, and let the cosmos lock the spell")
+
+    attempts = 0
+
+    while attempts < 3:
+        print()
+        ingredient_1 = input("Choose your first ingredient (1-4): ")
+
+        while ingredient_1 not in ["1", "2", "3", "4"]:
+            ingredient_1 = input("Invalid choice. Choose 1-4: ")
+
+        ingredient_2 = input("Choose your second ingredient (1-4): ")
+
+        while ingredient_2 not in ["1", "2", "3", "4"]:
+            ingredient_2 = input("Invalid choice. Choose 1-4: ")
+
+        ingredient_3 = input("Choose your third ingredient (1-4): ")
+
+        while ingredient_3 not in ["1", "2", "3", "4"]:
+            ingredient_3 = input("Invalid choice. Choose 1-4: ")
+
+        if ingredient_1 == "1" and ingredient_2 == "2" and ingredient_3 == "3":
+            print()
+            print("The potion glows with a bright magical light!")
+            print("The door opens. You successfully created the potion!")
+            return True
+
+        else:
+            attempts += 1
+            print()
+            print("The potion produces a strange purple smoke!")
+            
+            if attempts < 3:
+                print("Something is wrong with the ingredients.")
+                print("Remember the HINT!!!")
+                print("You have", 3-attempts, "attempts left.")
+
+    print()
+    print("The potion explodes!")
+    print("The magical door remains locked.")
+    return False
 
 def f8_final_battle_wr():
     i = 8
