@@ -152,7 +152,95 @@ def f7_potion_challenge():
     return False
 
 def f8_final_battle_wr():
-    i = 8
+    '''
+    RPG battle against the Dark Wizard.
+    The player can attack, heal or use a shield.
+    The Dark Wizard can attack, heal or gain fire immunity.
+    '''
+
+    print()
+    print("THE FINAL BATTLE!")
+    print("The Dark Wizard raises his staff.")
+
+    player_health = 100
+    wizard_health = 100
+    crystal_shield = False
+    fire_immunity = 0
+    
+    while player_health > 0 and wizard_health > 0:
+        print()
+        print("Wizard Raccoon:", player_health, "HP")
+        print("Dark Wizard:", wizard_health, "HP")
+        
+        print("1. Arcane Comet (18-25 damage)")
+        print("2. Phoenix Flame (25-32 damage)")
+        print("3. Healing spell (+22 HP)")
+        print("4. Crystal shield (you take half damage)")
+        
+        choice = input("Choose your action: ")
+        
+        while choice not in ["1", "2", "3", "4"]:
+            print("Invalid choice.")
+            choice = input("Choose your action: ")
+
+        if choice == "1":
+            damage = random.randint(18, 25)
+            wizard_health -- damagee
+            print("Arcane comet deals", damage, "damage!")
+
+        elif choice == "2":
+            if fire_immunity > 0:
+                print("The Dark Wizard is immune to fire!")
+            else:
+                damage = random.randint(25, 32)
+                wizard_health -= damage
+                print("Phoenix flame deals", damage, "damage!")
+
+        elif choice == "3":
+            player_health = min(100, player_health +22)
+            print("You recover health:", player_health, "HP")
+
+        elif choice == "4":
+            crystal_shield = True
+            print("Crystal shield activated!")
+
+        if wizard_health <= 0:
+            break
+
+        if fire_immunity > 0:
+            fire_immunity -= 1
+
+        wizard_action = random.choice(["attack", "attack", "heal", "potion"])
+
+        if wizard_action == "heal" and wizard_health < 80:
+            wizard_health = min(100, wizard_health + 18)
+            print("Dark Wizard heals 18 HP.")
+
+        elif wizard_action == "potion" and fire_immunity == 0:
+            fire_immunity = 2
+            print("Dark Wizard gains fire immunity!")
+
+        else:
+            damage = random.randint(15, 23)
+            spell = random.choice(["Shadow bolt", "Dark lightning", "Soul drain"])
+            
+            if crystal_shield:
+                damage //= 2
+                crystal_shield = False
+                print("Crystal shield reduces the damage!")
+
+            player_health -= damage
+            print(spell, "deals", damage, "damage!")
+
+    print()
+    
+    if player_health > 0:
+        print("VICTORY! The Dark Wizard has been defeated!")
+        return True
+
+    else:
+        print("DEFEAT! The Dark Wizard was too powerful!")
+        return False
 
 def wizard_raccoon():
     '''
